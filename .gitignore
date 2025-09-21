@@ -1,0 +1,75 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+# Built application files
+*.apk
+*.ap_
+*.aab
+*.aar
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+build/
+.gradle/
+.idea/libraries/
+local.properties
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+generated/
+out/
+outputs/
+
+# Gradle files
+gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+
+# Android Studio and IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+.vscode/
+
+# Keystore files (uncomment if you do not want to check them in)
+# *.keystore
+# debug.keystore
+
+# Local configuration files
+# For example, local.properties might contain sensitive information like API keys
+# or paths specific to your machine.
+local.properties
+
+# Log files
+*.log
+
+# Test results
+# For example, if you have unit tests or instrumented tests that generate reports.
+test-results/
+
+# Other temporary files
+tmp/
+*.swp
+*.bak
