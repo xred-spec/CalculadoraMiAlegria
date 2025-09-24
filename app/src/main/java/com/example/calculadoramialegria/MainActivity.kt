@@ -8,6 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 
+// 1-2*0 = -0 ✓
+// division /0 ✓
+// cambio de signo ✓
+// guardar valores i guess ✓
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,31 +105,51 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonSum.setOnClickListener {
-            operacion = "sum"
-            num1 = textResultado.text.toString().toDouble()
-            limpiarTexto(textResultado)
+            if(operacion == "") {
+                operacion = "sum"
+                num1 = textResultado.text.toString().toDouble()
+                limpiarTexto(textResultado)
+            } else {
+                operacion = "sum"
+                limpiarTexto(textResultado)
+            }
         }
 
         buttonRes.setOnClickListener {
-            operacion = "res"
-            num1 = textResultado.text.toString().toDouble()
-            limpiarTexto(textResultado)
+            if(operacion == "") {
+                operacion = "res"
+                num1 = textResultado.text.toString().toDouble()
+                limpiarTexto(textResultado)
+            } else {
+                operacion = "res"
+                limpiarTexto(textResultado)
+            }
         }
 
         buttonMul.setOnClickListener {
-            operacion = "mul"
-            num1 = textResultado.text.toString().toDouble()
-            limpiarTexto(textResultado)
+            if(operacion == "") {
+                operacion = "mul"
+                num1 = textResultado.text.toString().toDouble()
+                limpiarTexto(textResultado)
+            } else {
+                operacion = "mul"
+                limpiarTexto(textResultado)
+            }
         }
 
         buttonDiv.setOnClickListener {
-            operacion = "div"
-            num1 = textResultado.text.toString().toDouble()
-            limpiarTexto(textResultado)
+            if(operacion == "") {
+                operacion = "div"
+                num1 = textResultado.text.toString().toDouble()
+                limpiarTexto(textResultado)
+            } else {
+                operacion = "div"
+                limpiarTexto(textResultado)
+            }
         }
         buttonEq.setOnClickListener {
             num2 = textResultado.text.toString().toDouble()
-            calcular(textResultado, num1, num2, operacion)
+            operacion = calcular(textResultado, num1, num2, operacion)
         }
     }
 
@@ -156,7 +180,7 @@ class MainActivity : AppCompatActivity() {
         textResultado.text = stringTextResultado
     }
 
-    fun calcular(textResultado: TextView, num1: Double, num2: Double, operacion: String) {
+    fun calcular(textResultado: TextView, num1: Double, num2: Double, operacion: String): String {
         if(operacion != "") {
             var resultado = 0.0
             when(operacion) {
@@ -170,10 +194,14 @@ class MainActivity : AppCompatActivity() {
                     resultado = num1 * num2
                 }
                 "div" -> {
-                    resultado = num1 / num2
+                    if(num2 != 0.0) {
+                        resultado = num1 / num2
+                    }
                 }
             }
             textResultado.text = resultado.toString()
+            if(textResultado.text == "-0.0") textResultado.text = "0.0"
         }
+        return ""
     }
 }
