@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         var operacion = ""
         var num1 = 0.0
         var num2 = 0.0
+        var negativo = false
 
         buttonRedo.setOnClickListener {
             borrarChar(textResultado)
@@ -69,47 +70,66 @@ class MainActivity : AppCompatActivity() {
 
         button1.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 1)
+            //if(!negativo) {
+                agregarNumero(textResultado, 1)
+            //} else agregarNumero(textResultado, -1)
+
         }
 
         button2.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 2)
+            //if(!negativo) {
+                agregarNumero(textResultado, 2)
+            //} else agregarNumero(textResultado, -2)
         }
 
         button3.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 3)
+            //if(!negativo) {
+                agregarNumero(textResultado, 3)
+            //} else agregarNumero(textResultado, -3)
         }
 
         button4.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 4)
+            //if(!negativo) {
+                agregarNumero(textResultado, 4)
+            //} else agregarNumero(textResultado, -4)
         }
 
         button5.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 5)
+            //if(!negativo) {
+                agregarNumero(textResultado, 5)
+            //} else agregarNumero(textResultado, -5)
         }
 
         button6.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 6)
+            //if(!negativo) {
+                agregarNumero(textResultado, 6)
+            //} else agregarNumero(textResultado, -6)
         }
 
         button7.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 7)
+            //if(!negativo) {
+                agregarNumero(textResultado, 7)
+            //} else agregarNumero(textResultado, -7)
         }
 
         button8.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 8)
+            //if(!negativo) {
+                agregarNumero(textResultado, 8)
+            //} else agregarNumero(textResultado, -8)
         }
 
         button9.setOnClickListener {
             if(textResultado.text == "Error") textResultado.text = "0"
-            agregarNumero(textResultado, 9)
+            //if(!negativo) {
+                agregarNumero(textResultado, 9)
+            //} else agregarNumero(textResultado, -9)
         }
 
         buttonDot.setOnClickListener {
@@ -118,12 +138,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonNegative.setOnClickListener {
-            if(textResultado.text != "0" || textResultado.text != "0.0") {
-                var string = textResultado.text
-                var number = string.toString().toDouble()
-                number *= -1
-                textResultado.text = number.toString()
-            }
+            negativo = true
+            var string = ""
+            var number = 0.0
+            string = textResultado.text.toString()
+            number = string.toString().toDouble()
+            number *= -1
+            textResultado.text = number.toString()
+            if(textResultado.text == "-0" || textResultado.text == "-0.0") textResultado.text = "0.0"
         }
 
         buttonSum.setOnClickListener {
@@ -189,6 +211,7 @@ class MainActivity : AppCompatActivity() {
         stringTextResultado = stringTextResultado.dropLast(1)
         if(stringTextResultado.isEmpty()) stringTextResultado = "0"
         textResultado.text = stringTextResultado
+        if(textResultado.text == "-0.0" || textResultado.text == "-0") textResultado.text = "0.0"
     }
 
     fun agregarNumero(textResultado: TextView, numero: Int) {
