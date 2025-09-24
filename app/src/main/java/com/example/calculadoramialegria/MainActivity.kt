@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         val buttonMul = findViewById<Button>(R.id.button_mul)
         val buttonDiv = findViewById<Button>(R.id.button_div)
 
+        val buttonNegative = findViewById<Button>(R.id.button_negative)
+
         val buttonEq = findViewById<Button>(R.id.button_eq)
 
         var operacion = ""
@@ -61,50 +63,71 @@ class MainActivity : AppCompatActivity() {
         }
 
         button0.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 0)
         }
 
         button1.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 1)
         }
 
         button2.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 2)
         }
 
         button3.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 3)
         }
 
         button4.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 4)
         }
 
         button5.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 5)
         }
 
         button6.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 6)
         }
 
         button7.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 7)
         }
 
         button8.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 8)
         }
 
         button9.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarNumero(textResultado, 9)
         }
 
         buttonDot.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             agregarPunto(textResultado)
         }
 
+        buttonNegative.setOnClickListener {
+            if(textResultado.text != "0" || textResultado.text != "0.0") {
+                var string = textResultado.text
+                var number = string.toString().toDouble()
+                number *= -1
+                textResultado.text = number.toString()
+            }
+        }
+
         buttonSum.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             if(operacion == "") {
                 operacion = "sum"
                 num1 = textResultado.text.toString().toDouble()
@@ -116,6 +139,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonRes.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             if(operacion == "") {
                 operacion = "res"
                 num1 = textResultado.text.toString().toDouble()
@@ -127,6 +151,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonMul.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             if(operacion == "") {
                 operacion = "mul"
                 num1 = textResultado.text.toString().toDouble()
@@ -138,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonDiv.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             if(operacion == "") {
                 operacion = "div"
                 num1 = textResultado.text.toString().toDouble()
@@ -148,6 +174,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         buttonEq.setOnClickListener {
+            if(textResultado.text == "Error") textResultado.text = "0"
             num2 = textResultado.text.toString().toDouble()
             operacion = calcular(textResultado, num1, num2, operacion)
         }
@@ -183,6 +210,7 @@ class MainActivity : AppCompatActivity() {
     fun calcular(textResultado: TextView, num1: Double, num2: Double, operacion: String): String {
         if(operacion != "") {
             var resultado = 0.0
+            var error = false
             when(operacion) {
                 "sum" -> {
                     resultado = num1 + num2
@@ -194,12 +222,15 @@ class MainActivity : AppCompatActivity() {
                     resultado = num1 * num2
                 }
                 "div" -> {
-                    if(num2 != 0.0) {
+                    if(textResultado.text == "0" || textResultado.text == "0.0") {
+                        textResultado.text = "Error"
+                        error = true
+                    } else {
                         resultado = num1 / num2
                     }
                 }
             }
-            textResultado.text = resultado.toString()
+            if(!error) textResultado.text = resultado.toString()
             if(textResultado.text == "-0.0") textResultado.text = "0.0"
         }
         return ""
