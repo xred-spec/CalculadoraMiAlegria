@@ -1,1 +1,1 @@
-Pequeña práctica de App móvil para Android. Calculadora simple.
+Pequeña práctica de App móvil para Android. Calculadora simple hecha con Kotlin.
